@@ -4,7 +4,7 @@ plugins {
     application
 }
 
-group = "com.example"
+group = "com.github.adamarguti"  // <- aquí corregido
 version = "0.0.1"
 
 repositories {
@@ -30,6 +30,7 @@ kotlin {
 }
 
 application {
+    // Debe apuntar a tu clase principal generada por Kotlin (ApplicationKt)
     mainClass.set("com.github.adamarguti.ApplicationKt")
 }
 

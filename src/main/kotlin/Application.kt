@@ -1,4 +1,4 @@
-package com.adamar
+package com.github.adamarguti
 
 import io.ktor.server.engine.*
 import io.ktor.server.netty.*
@@ -10,8 +10,6 @@ fun main() {
         configureRouting()
     }.start(wait = true)
 }
-
-
 
 
 

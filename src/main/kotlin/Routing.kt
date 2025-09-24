@@ -1,4 +1,4 @@
-package com.adamar
+package com.github.adamarguti
 
 import io.ktor.server.application.*
 import io.ktor.server.response.*
@@ -76,3 +76,4 @@ fun Application.configureRouting() {
         }
     }
 }
+
