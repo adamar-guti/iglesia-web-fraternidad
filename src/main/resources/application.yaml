@@ -1,9 +1,15 @@
 ktor:
     deployment:
-        port: ${PORT:-8080}
+        port: ${PORT:8080}   # Render asigna el puerto en la variable de entorno
         watch:
-            - com.example
+            - classes
+            - resources
     application:
         modules:
-            - com.example.ApplicationKt.module
+            - com.adamar.ktor.ApplicationKt.module
+
+logging:
+    level: INFO
+
+
 

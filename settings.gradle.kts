@@ -1,7 +1,8 @@
-rootProject.name = "ktor-sample"
-
-dependencyResolutionManagement {
+pluginManagement {
     repositories {
+        gradlePluginPortal()
         mavenCentral()
     }
 }
+
+

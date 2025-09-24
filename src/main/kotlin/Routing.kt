@@ -1,4 +1,4 @@
-package com.example
+package com.adamar
 
 import io.ktor.server.application.*
 import io.ktor.server.response.*
@@ -11,7 +11,7 @@ fun Application.configureRouting() {
         get("/") {
             call.respondHtml {
                 head {
-                    title { +"Iglesia Cristiana Fuente de Vida" }
+                    title { +"Iglesia Cristiana Fraternidad Bogotá" }
                     style {
                         unsafe {
                             +"""
@@ -53,23 +53,23 @@ fun Application.configureRouting() {
                     }
                 }
                 body {
-                    h1 { +"Bienvenido a la Iglesia Cristiana fraternidad Bogota" }
-                    p { +"somos familia." }
+                    h1 { +"Bienvenido a la Iglesia Cristiana Fraternidad Bogotá" }
+                    p { +"Somos familia." }
 
                     div("card") {
                         h2 { +"Próximos eventos" }
                         ul {
                             li { +"Culto dominical: Domingo 10:00 AM" }
-                            li { +"celula : Sábado 6:00 PM" }
+                            li { +"Célula: Sábado 6:00 PM" }
                             li { +"Estudio bíblico: Miércoles 7:30 PM" }
                         }
                     }
 
                     div("card contacto") {
                         h2 { +"Contáctanos" }
-                        p { +"📍 Dirección: salon comunal balcones de vista hermosa calle 190 a # 1-04, codito usaquen" }
+                        p { +"📍 Dirección: Salón Comunal Balcones de Vista Hermosa, Calle 190A #1-04, Codito Usaquén" }
                         p { +"📞 Teléfono: +57 321 996 55 12" }
-                        p { +"📧 Correo: " }
+                        p { +"📧 Correo: contacto@fraternidadbogota.org" }
                     }
                 }
             }
