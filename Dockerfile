@@ -1,18 +1,26 @@
-# Usar OpenJDK 21
-FROM eclipse-temurin:21-jdk-alpine
-
-# Directorio de la app
+# Etapa 1: build
+FROM eclipse-temurin:21-jdk-alpine AS build
 WORKDIR /app
 
-# Copiar el JAR generado (nuestro fatJar)
-COPY build/libs/ktor-sample.jar app.jar
+# Copiar todo el proyecto
+COPY . .
 
-# Exponer el puerto (Render asignará el puerto real con variable PORT)
+# Generar el fatJar dentro del contenedor
+RUN ./gradlew clean fatJar
+
+# Etapa 2: runtime
+FROM eclipse-temurin:21-jre-alpine
+WORKDIR /app
+
+# Copiar solo el JAR final desde la etapa de build
+COPY --from=build /app/build/libs/ktor-sample-0.0.1-all.jar app.jar
+
+# Puerto de la app (Render usará la variable PORT)
 ENV PORT=8080
 EXPOSE 8080
 
-# Comando para ejecutar la app
-ENTRYPOINT ["java", "-jar", "app.jar"]
+# Ejecutar la app usando el puerto asignado
+ENTRYPOINT ["sh", "-c", "java -jar app.jar --server.port=$PORT"]
 
 
 

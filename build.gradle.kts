@@ -4,7 +4,7 @@ plugins {
     application
 }
 
-group = "com.github.adamarguti"  // <- aquí corregido
+group = "com.github.adamarguti"
 version = "0.0.1"
 
 repositories {
@@ -30,13 +30,13 @@ kotlin {
 }
 
 application {
-    // Debe apuntar a tu clase principal generada por Kotlin (ApplicationKt)
     mainClass.set("com.github.adamarguti.ApplicationKt")
 }
 
 // Generar un JAR ejecutable con todas las dependencias incluidas
 tasks.register<Jar>("fatJar") {
-    archiveFileName.set("ktor-sample.jar")
+    archiveBaseName.set("ktor-sample")  // nombre base del JAR
+    archiveClassifier.set("all")        // hace ktor-sample-all.jar
     duplicatesStrategy = DuplicatesStrategy.EXCLUDE
 
     manifest {
@@ -46,6 +46,12 @@ tasks.register<Jar>("fatJar") {
     from(configurations.runtimeClasspath.get().map { if (it.isDirectory) it else zipTree(it) })
     with(tasks.jar.get() as CopySpec)
 }
+
+// Hacer que 'build' también genere el fatJar
+tasks.build {
+    dependsOn("fatJar")
+}
+
 
 
 
