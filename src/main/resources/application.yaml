@@ -6,7 +6,7 @@ ktor:
             - resources
     application:
         modules:
-            - com.adamar.ktor.ApplicationKt.module
+            - com.github.adamarguti.ApplicationKt.module
 
 logging:
     level: INFO
